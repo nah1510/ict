@@ -107,7 +107,8 @@ def main() -> None:
     parser.add_argument("--data_dir", type=str, default="data/processed")
     parser.add_argument("--results_dir", type=str, default="results")
     parser.add_argument("--seeds", type=int, nargs="+", default=[42, 43, 44])
-    parser.add_argument("--epochs", type=int, default=10)
+    parser.add_argument("--epochs", type=int, default=5)
+    parser.add_argument("--batch_size", type=int, default=64)
     parser.add_argument("--k", type=int, default=20)
     parser.add_argument("--eval_only", action="store_true", help="Print saved benchmark results.")
     args = parser.parse_args()
@@ -177,6 +178,7 @@ def main() -> None:
                 num_items=num_items,
                 embed_dim=64,
                 hidden_dim=100,
+                batch_size=args.batch_size,
                 epochs=args.epochs,
                 loss_type=loss_type,
                 seed=seed,

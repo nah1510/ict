@@ -12,7 +12,12 @@ ict/
 ├── requirements.txt                 # Thư viện Python cần thiết
 ├── docs/
 │   ├── kich_ban_thuyet_trinh.md     # Kịch bản thuyết trình chi tiết (13 slides, phân vai 3 người, Q&A)
-│   └── kich_ban_demo.md             # Kịch bản thao tác Live Demo khi thuyết trình
+│   ├── kich_ban_demo.md             # Kịch bản thao tác Live Demo khi thuyết trình
+│   └── outline_bai_bao_lien_quan.md # Outline & phân tích 8 bài báo gốc theo chuẩn Mục 2 Báo cáo khoa học
+├── papers/                          # 8 bài báo gốc (PDF) của Chủ đề 9 (GRU4Rec, NARM, STAMP, SR-GNN, SKNN...)
+├── slides/
+│   ├── ChuDe09_SessionBasedRS.pptx  # Slide thuyết trình 15 slides (Nhóm 4) kèm script nói trong Speaker Notes
+│   └── preview_slides.html          # Bản xem trước 15 slides trên trình duyệt
 ├── src/
 │   ├── __init__.py
 │   ├── preprocess.py                # Tiền xử lý, lọc phiên/item, chia theo thời gian, sinh tiền tố & dữ liệu mẫu
@@ -29,8 +34,18 @@ ict/
 
 ## 2. Cài đặt môi trường
 
-Yêu cầu Python 3.9+ (khuyến nghị tạo môi trường ảo `venv` hoặc `conda`):
+Yêu cầu Python 3.9–3.12. Khuyến nghị dùng `uv` (nhanh, không cần quyền `sudo`) hoặc `venv` chuẩn:
 
+### Cách 1: Dùng `uv` (khuyên dùng trên Linux/macOS/Windows)
+```bash
+curl -LsSf https://astral.sh/uv/install.sh | sh
+uv venv --python 3.12 .venv
+source .venv/bin/activate        # Trên Windows: .venv\Scripts\activate
+uv pip install -r requirements.txt
+uv pip install py7zr             # Dùng để giải nén file yoochoose-data.7z
+```
+
+### Cách 2: Dùng `venv` + `pip` truyền thống
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate        # Trên Windows: .venv\Scripts\activate
@@ -42,18 +57,25 @@ pip install -r requirements.txt
 
 ## 3. Chuẩn bị dữ liệu
 
-Hệ thống hỗ trợ 2 chế độ:
+Hệ thống hỗ trợ 3 cách chuẩn bị dữ liệu:
 
-### Cách A: Chạy nhanh với dữ liệu mẫu mô phỏng (khuyên dùng để test pipeline & demo ngay)
-Không cần tải file lớn, script sẽ tự sinh bộ dữ liệu hành vi duyệt web giả lập có cấu trúc ý định theo phiên:
+### Cách A: Chạy trên dữ liệu thực tế YOOCHOOSE 1/64 (chuẩn benchmark của nhóm)
 ```bash
-python -m src.preprocess --sample --output_dir data/processed
+mkdir -p data/raw
+curl -L -o data/raw/yoochoose-data.7z "https://s3-eu-west-1.amazonaws.com/yc-rdata/yoochoose-data.7z"
+python -c "import py7zr; py7zr.SevenZipFile('data/raw/yoochoose-data.7z', 'r').extract(path='data/raw', targets=['yoochoose-clicks.dat'])"
+python -m src.preprocess --yoochoose data/raw/yoochoose-clicks.dat --fraction 64 --output_dir data/processed
 ```
 
-### Cách B: Chạy trên dữ liệu thực tế công khai
-Chuẩn bị file CSV có 3 cột `session_id,item_id,timestamp` (hỗ trợ **RetailRocket**, **YOOCHOOSE 1/64**, **DIGINETICA** sau khi chuẩn hóa tên cột):
+### Cách B: Chạy trên file CSV tùy chọn (RetailRocket, DIGINETICA...)
+Chuẩn bị file CSV có 3 cột `session_id,item_id,timestamp`:
 ```bash
 python -m src.preprocess --input_csv data/raw/events.csv --output_dir data/processed
+```
+
+### Cách C: Chạy nhanh với dữ liệu mẫu mô phỏng (test pipeline & demo)
+```bash
+python -m src.preprocess --sample --output_dir data/processed
 ```
 
 **Quy trình tiền xử lý áp dụng (chuẩn Chủ đề 9):**

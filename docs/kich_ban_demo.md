@@ -3,11 +3,14 @@
 ## Chuẩn bị trước giờ thuyết trình
 Chạy sẵn trước ở nhà/trước buổi học để lưu checkpoint và mở sẵn tab trình duyệt:
 ```bash
-# 1. Tạo dữ liệu (hoặc dùng dữ liệu thật đã tải)
-python -m src.preprocess --sample --output_dir data/processed
+# 0. Kích hoạt môi trường ảo
+source .venv/bin/activate
 
-# 2. Huấn luyện & xuất bảng kết quả + checkpoint
-python -m src.train_eval --data_dir data/processed --results_dir results --seeds 42 43 44 --epochs 10 --k 20
+# 1. Tiền xử lý dữ liệu thật YOOCHOOSE 1/64 (hoặc dùng --sample nếu muốn chạy nhanh)
+python -m src.preprocess --yoochoose data/raw/yoochoose-clicks.dat --fraction 64 --output_dir data/processed
+
+# 2. Huấn luyện & xuất bảng kết quả + checkpoint (3 random seeds)
+python -m src.train_eval --data_dir data/processed --results_dir results --seeds 42 43 44 --epochs 5 --batch_size 64 --k 20
 
 # 3. Khởi động ứng dụng demo
 streamlit run app_demo.py

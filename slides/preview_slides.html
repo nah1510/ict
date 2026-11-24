@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<title>Preview: ChuDe09_SessionBasedRS.pptx</title>
+<style>
+  body { font-family: system-ui, -apple-system, sans-serif; background: #f1f5f9; color: #0f172a; margin: 0; padding: 24px; }
+  .container { max-width: 980px; margin: 0 auto; }
+  h1 { color: #0f2942; margin-bottom: 6px; }
+  .sub { color: #475569; margin-bottom: 24px; }
+  .slide-card { background: #fff; border-radius: 12px; padding: 24px 28px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(15,41,66,0.08); border-left: 6px solid #0d9488; }
+  .slide-header { display: flex; align-items: center; gap: 12px; margin-bottom: 12px; }
+  .badge { background: #0f2942; color: #fff; padding: 4px 10px; border-radius: 6px; font-size: 12px; font-weight: 700; white-space: nowrap; }
+  h2 { margin: 0; font-size: 19px; color: #0f2942; }
+  .slide-body { margin: 0 0 14px 18px; line-height: 1.6; }
+  .notes { background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 8px; padding: 10px 14px; font-size: 13.5px; color: #334155; line-height: 1.55; }
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>Preview Nội Dung: ChuDe09_SessionBasedRS.pptx</h1>
+  <p class="sub">Bản xem trước toàn bộ 15 slides, số liệu thực nghiệm YOOCHOOSE 1/64 và script nói.</p>
+  
+    <section class="slide-card" id="slide-1">
+      <div class="slide-header">
+        <span class="badge">Slide 1 / 15</span>
+        <h2>TRƯỜNG ĐẠI HỌC CÔNG NGHIỆP TP. HỒ CHÍ MINH • KHOA CNTT</h2>
+      </div>
+      <ul class="slide-body"><li>Xu hướng mới trong ICT • Lớp CHKHMT15B1 • HK1 (2026 - 2027)</li><li>Chủ đề 9</li><li>Khuyến Nghị Dựa Trên Hành Vi Duyệt Web</li><li>(Session-based Recommendation)</li><li>GVHD: TS. Lê Thị Vĩnh Thanh</li><li>Nhóm 4: Phạm Bảo Hân  •  Đào Ngọc Anh Khôi  •  Mã Đức Thanh Trường</li></ul>
+      <div class="notes"><strong>Speaker Notes (Script nói):</strong> Xin chào cả lớp. Hôm nay nhóm xin trình bày Chủ đề 9: Khuyến nghị dựa trên hành vi duyệt web, hay còn gọi là Session-based Recommendation. Bài trình bày gồm 5 phần chính: đầu tiên là đặt vấn đề và phát biểu bài toán; thứ hai là tổng hợp các công trình liên quan; thứ ba là chi tiết các phương pháp từ baseline đến học sâu; thứ tư là phần demo trực tiếp kèm kết quả thực nghiệm; và cuối cùng là thảo luận, kết luận.</div>
+    </section>
+    <section class="slide-card" id="slide-2">
+      <div class="slide-header">
+        <span class="badge">Slide 2 / 15</span>
+        <h2>1. GIỚI THIỆU</h2>
+      </div>
+      <ul class="slide-body"><li>Đặt vấn đề</li><li>CHKHMT15B1 • Chủ đề 9: Session-based Recommendation</li><li>2 / 15</li><li>Thực tế hệ thống web</li><li>• Đa số khách truy cập không đăng nhập</li><li>• Không có lịch sử dài hạn (user_id ẩn danh)</li><li>• CF / MF truyền thống không áp dụng được</li><li>Bài toán đặt ra</li><li>• Ý định trong phiên mang tính tức thời</li><li>• Cần cập nhật gợi ý ngay sau mỗi cú click</li><li>• Chỉ dựa vào chuỗi tương tác hiện tại</li><li>Phiên duyệt web ẩn danh</li><li>Click 1:  iPhone 16</li><li>Click 2:  Ốp lưng MagSafe</li><li>Click 3:  Cáp sạc Type-C</li><li>Dự đoán Click 4:  Sạc dự phòng / Kính cường lực ?</li></ul>
+      <div class="notes"><strong>Speaker Notes (Script nói):</strong> Trên thực tế ở các trang thương mại điện tử hay tin tức, phần lớn người dùng vào xem mà không đăng nhập, hoặc trình duyệt xóa cookie. Khi không có user_id, các thuật toán lọc cộng tác hay phân rã ma trận truyền thống đều không xây được hồ sơ người dùng. Hơn nữa, ý định trong một phiên duyệt web thường mang tính nhất thời: ví dụ ở bên phải, một khách vãng lai lần lượt click xem iPhone 16, rồi ốp lưng, rồi cáp sạc. Dù ta không biết họ là ai, hệ thống vẫn cần hiểu ngay ý định hiện tại để gợi ý chính xác sản phẩm thứ 4 như sạc dự phòng hay kính cường lực.</div>
+    </section>
+    <section class="slide-card" id="slide-3">
+      <div class="slide-header">
+        <span class="badge">Slide 3 / 15</span>
+        <h2>1. GIỚI THIỆU</h2>
+      </div>
+      <ul class="slide-body"><li>Session-based RS vs. Sequential RS (Chủ đề 15)</li><li>CHKHMT15B1 • Chủ đề 9: Session-based Recommendation</li><li>3 / 15</li><li>Tiêu chí</li><li>Session-based RS (Chủ đề 9)</li><li>Sequential RS (Chủ đề 15)</li><li>Định danh người dùng</li><li>Không có (ẩn danh)</li><li>Có user_id dài hạn</li><li>Ngữ cảnh</li><li>1 phiên ngắn hạn</li><li>Nhiều phiên nối tiếp</li><li>Biểu diễn người dùng</li><li>Trạng thái phiên h_t</li><li>Embedding p_u + chuỗi lịch sử</li><li>Mô hình tiêu biểu</li><li>SKNN, GRU4Rec, NARM, SR-GNN</li><li>FPMC, Caser, SASRec, BERT4Rec</li><li>Session-based RS giải bài toán khắt khe hơn: không phụ thuộc hồ sơ người dùng tích lũy trước đó.</li></ul>
+      <div class="notes"><strong>Speaker Notes (Script nói):</strong> Một điểm rất dễ nhầm là sự khác nhau giữa khuyến nghị theo phiên ở Chủ đề 9 và khuyến nghị tuần tự ở Chủ đề 15. Ở khuyến nghị tuần tự, hệ thống biết rõ user_id và có lịch sử dài hạn qua nhiều tuần, nhiều tháng để học embedding người dùng. Ngược lại, khuyến nghị theo phiên hoàn toàn ẩn danh, ngữ cảnh chỉ gói gọn trong một phiên ngắn hạn hiện tại và biểu diễn hoàn toàn bằng vector trạng thái h_t. Chính vì ràng buộc chặt hơn nên các mô hình cũng khác nhau, tiêu biểu là SKNN, GRU4Rec, NARM hay SR-GNN.</div>
+    </section>
+    <section class="slide-card" id="slide-4">
+      <div class="slide-header">
+        <span class="badge">Slide 4 / 15</span>
+        <h2>1. GIỚI THIỆU</h2>
+      </div>
+      <ul class="slide-body"><li>Phát biểu bài toán</li><li>CHKHMT15B1 • Chủ đề 9: Session-based Recommendation</li><li>4 / 15</li><li>Đầu vào</li><li>• Tập sản phẩm I (n = |I|)</li><li>• Nhật ký click: (session_id, item_id, timestamp)</li><li>• Tiền tố phiên hiện tại: s = [i₁, i₂, …, i_t]</li><li>Đầu ra &amp; Mục tiêu</li><li>• Danh sách Top-N sản phẩm tiếp theo</li><li>• Cập nhật ngay sau mỗi lần click</li><li>• Tối ưu thứ hạng sản phẩm đúng i_(t+1)</li><li>Phân phối xác suất sản phẩm kế tiếp</li><li>P( i_(t+1) = j | i₁, …, i_t ) = softmax_j ( h_tᵀ e_j )</li><li>• h_t ∈ ℝ^d : vector biểu diễn phiên ở bước t</li><li>• e_j ∈ ℝ^d : embedding sản phẩm j</li><li>• Độ đo đánh giá: HR@20 (Recall@20) và MRR@20</li></ul>
+      <div class="notes"><strong>Speaker Notes (Script nói):</strong> Về mặt toán học, đầu vào của bài toán gồm tập sản phẩm I và chuỗi tiền tố phiên hiện tại s từ i_1 đến i_t. Đầu ra là danh sách Top-N sản phẩm có xác suất được nhấp tiếp theo cao nhất, cập nhật liên tục sau mỗi lần click. Mục tiêu của mô hình là học được vector biểu diễn phiên h_t và vector nhúng sản phẩm e_j sao cho phân phối softmax của tích vô hướng h_t^T e_j gán xác suất cao nhất cho đúng sản phẩm thực tế i_{t+1}. Để đánh giá chất lượng xếp hạng, ta dùng hai độ đo chuẩn là HR@20 và MRR@20.</div>
+    </section>
+    <section class="slide-card" id="slide-5">
+      <div class="slide-header">
+        <span class="badge">Slide 5 / 15</span>
+        <h2>2. CÔNG TRÌNH LIÊN QUAN</h2>
+      </div>
+      <ul class="slide-body"><li>Công trình liên quan &amp; Lộ trình nghiên cứu</li><li>CHKHMT15B1 • Chủ đề 9: Session-based Recommendation</li><li>5 / 15</li><li>Hướng tiếp cận</li><li>Bài báo tiêu biểu</li><li>Đóng góp chính</li><li>Hạn chế</li><li>Nền tảng &amp; RNN</li><li>Chung (2014)</li><li>Hidasi (2016, 2018)</li><li>GRU, session-parallel minibatch,</li><li>loss TOP1 / BPR-max</li><li>Chỉ giữ h_t cuối,</li><li>quên ý định đầu phiên</li><li>Hàng xóm (KNN)</li><li>Jannach &amp; Ludewig</li><li>(2017, 2018)</li><li>SKNN, V-SKNN;</li><li>chứng minh baseline rất mạnh</li><li>Chi phí tìm kiếm tăng</li><li>khi lịch sử lớn</li><li>Attention</li><li>NARM (Li 2017)</li><li>STAMP (Liu 2018)</li><li>Global attention + ưu tiên</li><li>click cuối (short-term)</li><li>Chưa bắt tốt chuyển tiếp</li><li>lặp lại (A → B → A)</li><li>Đồ thị (GNN)</li><li>SR-GNN (Wu 2019)</li><li>Đồ thị có hướng trên phiên</li><li>+ Gated GNN</li><li>Chi phí huấn luyện cao</li><li>Khoảng trống kiểm chứng (Research Gap)</li><li>• Kiểm chứng công bằng giữa V-SKNN và GRU4Rec trên cùng quy trình chia theo thời gian, đa seed.</li><li>• Đánh giá độ nhạy theo độ dài phiên và hàm mất mát (Cross-Entropy vs. BPR).</li></ul>
+      <div class="notes"><strong>Speaker Notes (Script nói):</strong> Nhìn lại dòng chảy nghiên cứu từ 8 bài báo nền tảng, ta thấy 4 hướng phát triển chính. Thứ nhất là hướng RNN, bắt đầu từ kiến trúc GRU của Chung (2014) và được Hidasi cùng cộng sự đưa vào bài toán phiên với GRU4Rec năm 2016 và bản cải tiến loss năm 2018. Thứ hai là hướng phản biện bằng phương pháp hàng xóm của Jannach và Ludewig (2017, 2018), chứng minh SKNN và V-SKNN có hiệu năng rất cao. Thứ ba là nhóm Attention như NARM và STAMP để nắm giữ ý định tổng thể của phiên. Và thứ tư là SR-GNN dùng đồ thị có hướng để bắt các chuyển tiếp lặp lại. Từ đây, khoảng trống nhóm tập trung kiểm chứng là liệu khi đặt lên cùng một quy trình đánh giá công bằng theo thời gian và chạy đa seed, GRU4Rec so với V-SKNN sẽ như thế nào theo độ dài phiên và hàm mất mát.</div>
+    </section>
+    <section class="slide-card" id="slide-6">
+      <div class="slide-header">
+        <span class="badge">Slide 6 / 15</span>
+        <h2>3. PHƯƠNG PHÁP</h2>
+      </div>
+      <ul class="slide-body"><li>Tiền xử lý &amp; Tăng cường dữ liệu</li><li>CHKHMT15B1 • Chủ đề 9: Session-based Recommendation</li><li>6 / 15</li><li>1. Lọc nhiễu</li><li>Item &lt; 5 lần</li><li>Phiên độ dài = 1</li><li>2. Chia thời gian</li><li>Ngày / tuần cuối</li><li>làm tập Test</li><li>3. Sinh tiền tố</li><li>Sequence Splitting</li><li>[i₁..i_t] → i_(t+1)</li><li>4. Mã hóa ID</li><li>Item ID: 1…n</li><li>(0 = padding)</li><li>Sequence Splitting — Phiên s = [ i₁, i₂, i₃, i₄ ]</li><li>• Mẫu 1:   [ i₁ ]             →   i₂</li><li>• Mẫu 2:   [ i₁, i₂ ]         →   i₃</li><li>• Mẫu 3:   [ i₁, i₂, i₃ ]     →   i₄</li><li>⇒ Một phiên độ dài L tạo ra (L − 1) cặp huấn luyện ở mọi độ dài tiền tố.</li></ul>
+      <div class="notes"><strong>Speaker Notes (Script nói):</strong> Bước đầu tiên trong quy trình phương pháp là tiền xử lý dữ liệu theo đúng chuẩn của bài toán phiên. Trước hết, ta lọc bỏ các sản phẩm xuất hiện dưới 5 lần và các phiên chỉ có độ dài bằng 1 vì không có bước chuyển tiếp để dự đoán. Tiếp theo, tập dữ liệu bắt buộc phải chia theo mốc thời gian, lấy ngày hoặc tuần cuối cùng làm tập kiểm tra nhằm tránh rò rỉ thông tin tương lai. Cuối cùng, ta thực hiện kỹ thuật tăng cường dữ liệu Sequence Splitting: với một phiên dài 4 sản phẩm như ví dụ bên dưới, ta tách thành 3 mẫu huấn luyện tương ứng với độ dài tiền tố từ 1 đến 3, giúp mô hình học dự đoán tốt ở mọi thời điểm trong phiên.</div>
+    </section>
+    <section class="slide-card" id="slide-7">
+      <div class="slide-header">
+        <span class="badge">Slide 7 / 15</span>
+        <h2>3. PHƯƠNG PHÁP</h2>
+      </div>
+      <ul class="slide-body"><li>Baseline đơn giản &amp; SKNN / V-SKNN</li><li>CHKHMT15B1 • Chủ đề 9: Session-based Recommendation</li><li>7 / 15</li><li>Nhóm Baseline cơ bản</li><li>• POP: Phổ biến nhất toàn tập train</li><li>• S-POP: Phổ biến trong chính phiên hiện tại</li><li>• Item-KNN: Cosine đồng xuất hiện từ item cuối</li><li>SKNN &amp; V-SKNN</li><li>• SKNN: Tìm K phiên lịch sử giống nhất (Cosine)</li><li>• Chấm điểm ứng viên theo tổng độ tương tự</li><li>• V-SKNN: Thêm trọng số suy giảm theo thời gian</li><li>Ví dụ tính tay: SKNN (K = 2)</li><li>Phiên hiện tại:  s = {A, B}</li><li>Lịch sử:</li><li>• s₁ = {A, B, C}  →  sim(s, s₁) = 2 / √(2·3) ≈ 0.82</li><li>• s₂ = {A, D}      →  sim(s, s₂) = 1 / √(2·2) = 0.50</li><li>• s₃ = {B, C, E}  →  sim(s, s₃) = 1 / √(2·3) ≈ 0.41</li><li>Chọn Top-2 phiên: s₁, s₂</li><li>• score(C) = 0.82   |   score(D) = 0.50</li><li>⇒ Đề xuất Top-1:  C</li></ul>
+      <div class="notes"><strong>Speaker Notes (Script nói):</strong> Trước khi đi vào mạng nơ-ron, ta cần các phương pháp cơ sở vững chắc. Đơn giản nhất là POP gợi ý đồ bán chạy chung, S-POP ưu tiên sản phẩm trong chính phiên đó, và Item-KNN dựa trên đồng xuất hiện với cú click cuối. Mạnh hơn nhiều là SKNN: thay vì chỉ nhìn item cuối, SKNN so sánh cả phiên hiện tại với các phiên lịch sử bằng độ tương tự cosine. Như ví dụ tính tay bên phải với K=2: phiên hiện tại gồm A và B; so với 3 phiên lịch sử, s_1 đạt độ tương tự cao nhất là 0.82, s_2 là 0.50. Lấy 2 phiên gần nhất này, sản phẩm C xuất hiện ở s_1 nhận điểm 0.82, vượt D có điểm 0.50 nên C được xếp Top-1. Biến thể V-SKNN cải tiến thêm bằng cách gán trọng số cao hơn cho những cú click gần thời điểm hiện tại nhất.</div>
+    </section>
+    <section class="slide-card" id="slide-8">
+      <div class="slide-header">
+        <span class="badge">Slide 8 / 15</span>
+        <h2>3. PHƯƠNG PHÁP</h2>
+      </div>
+      <ul class="slide-body"><li>GRU4Rec (Hidasi et al., ICLR 2016)</li><li>CHKHMT15B1 • Chủ đề 9: Session-based Recommendation</li><li>8 / 15</li><li>Cập nhật trạng thái GRU</li><li>z_t = σ(W_z x_t + U_z h_(t-1)),   r_t = σ(W_r x_t + U_r h_(t-1))</li><li>h̃_t = tanh(W x_t + U(r_t ⊙ h_(t-1)))</li><li>h_t = (1 − z_t) ⊙ h_(t-1) + z_t ⊙ h̃_t</li><li>Negative Sampling &amp; Loss</li><li>• Mẫu âm: Các item đích khác trong cùng minibatch</li><li>• Cross-Entropy: Tối ưu phân phối softmax</li><li>• BPR / TOP1: Tối ưu thứ hạng cặp (pos &gt; neg)</li><li>Session-parallel Minibatch (Batch = 3)</li><li>Slot 1:  [ s₁: i₁ → i₂ → i₃ ]  (Reset h=0)  [ s₄: i₁ → i₂ ]</li><li>Slot 2:  [ s₂: i₁ → i₂ ]  (Reset)  [ s₅: i₁ → i₂ → i₃ → i₄ ]</li><li>Slot 3:  [ s₃: i₁ → i₂ → i₃ → i₄ ]  (Reset)  [ s₆: i₁ → … ]</li><li>• Không lãng phí tính toán vào &lt;PAD&gt;</li><li>• Phiên kết thúc → nạp phiên mới và reset h = 0</li></ul>
+      <div class="notes"><strong>Speaker Notes (Script nói):</strong> Tiếp theo là GRU4Rec — mô hình mạng nơ-ron hồi quy đầu tiên cho khuyến nghị theo phiên. Ở mỗi bước thời gian, embedding của sản phẩm vừa click đi qua ô GRU với hai cổng cập nhật z_t và cổng xóa r_t để sinh ra trạng thái ẩn mới h_t. Điểm thiết kế thông minh nhất của GRU4Rec nằm ở sơ đồ Session-parallel minibatch bên phải. Vì độ dài các phiên rất khác nhau, nếu ta đệm padding về cùng chiều dài lớn nhất thì sẽ tốn bộ nhớ và tính toán vô ích. Thay vào đó, mỗi slot trong batch chạy song song một phiên; ngay khi phiên đó kết thúc, hệ thống reset trạng thái ẩn h về 0 và nạp liền phiên tiếp theo vào slot đó. Đồng thời, các sản phẩm đích của những phiên khác trong cùng minibatch được tận dụng luôn làm mẫu âm cho hàm mất mát BPR, TOP1 hoặc Cross-Entropy.</div>
+    </section>
+    <section class="slide-card" id="slide-9">
+      <div class="slide-header">
+        <span class="badge">Slide 9 / 15</span>
+        <h2>3. PHƯƠNG PHÁP</h2>
+      </div>
+      <ul class="slide-body"><li>Mở rộng ý tưởng: NARM &amp; SR-GNN</li><li>CHKHMT15B1 • Chủ đề 9: Session-based Recommendation</li><li>9 / 15</li><li>NARM (Li et al., CIKM 2017)</li><li>• Khắc phục việc GRU chỉ giữ trạng thái cuối h_t</li><li>• Global Encoder: Attention trên mọi trạng thái h₁…h_t → nắm mục đích chính của phiên</li><li>• Local Encoder: Trạng thái cuối h_t → nắm hành vi tuần tự gần nhất</li><li>• Nối [ c_global ; c_local ] để chấm điểm ứng viên</li><li>SR-GNN (Wu et al., AAAI 2019)</li><li>• RNN khó nắm chuyển tiếp lặp lại (A → B → A)</li><li>• Chuyển phiên thành đồ thị có hướng G_s = (V_s, E_s)</li><li>• Dùng Gated GNN lan truyền thông tin giữa các nút</li><li>• Kết hợp embedding nút cuối + attention toàn đồ thị</li></ul>
+      <div class="notes"><strong>Speaker Notes (Script nói):</strong> Để khắc phục hai điểm yếu của GRU4Rec, có hai hướng mở rộng tiêu biểu về mặt ý tưởng. Thứ nhất là NARM: thay vì chỉ dùng trạng thái cuối h_t dễ bị quên các click đầu ở phiên dài, NARM kết hợp cả một nhánh Global Encoder dùng cơ chế Attention tính tổng có trọng số trên toàn bộ các trạng thái để giữ mục đích chính, nối với trạng thái cuối phản ánh hành vi tuần tự cục bộ. Thứ hai là SR-GNN: trong thực tế người dùng hay click qua lại giữa hai sản phẩm để so sánh theo kiểu A sang B rồi quay lại A. Mô hình chuỗi một chiều khó nắm quan hệ này, nên SR-GNN chuyển cả phiên thành một đồ thị có hướng và dùng mạng nơ-ron đồ thị Gated GNN để lan truyền thông tin giữa các nút.</div>
+    </section>
+    <section class="slide-card" id="slide-10">
+      <div class="slide-header">
+        <span class="badge">Slide 10 / 15</span>
+        <h2>4. THỰC NGHIỆM</h2>
+      </div>
+      <ul class="slide-body"><li>Thiết lập thực nghiệm &amp; Độ đo</li><li>CHKHMT15B1 • Chủ đề 9: Session-based Recommendation</li><li>10 / 15</li><li>Bộ dữ liệu</li><li>Đặc điểm</li><li>Nguồn</li><li>YOOCHOOSE (1/64)</li><li>Click chuột TMĐT châu Âu</li><li>RecSys Challenge 2015</li><li>DIGINETICA</li><li>Phiên duyệt sản phẩm + truy vấn</li><li>CIKM Cup 2016</li><li>RetailRocket</li><li>Sự kiện xem, thêm giỏ, mua</li><li>Kaggle</li><li>Quy trình đánh giá (YOOCHOOSE 1/64)</li><li>• 105.558 phiên, 8.365 sản phẩm (sau lọc)</li><li>• Train: 84.448 | Valid: 10.555 | Test: 10.555 (38.928 cặp)</li><li>• Chạy 3 random seeds (42, 43, 44) → Mean ± Std</li><li>• Baselines: POP, S-POP, Item-KNN, SKNN, V-SKNN</li><li>Độ đo Top-20</li><li>• HR@20: Tỉ lệ phiên có nhãn đúng trong Top-20</li><li>• MRR@20: Trung bình 1 / rank (ưu tiên hạng cao)</li><li>• Ví dụ: Sản phẩm đúng đứng hạng 4</li><li>⇒ HR@20 = 1.0,   MRR@20 = 1/4 = 0.25</li></ul>
+      <div class="notes"><strong>Speaker Notes (Script nói):</strong> Bước sang phần thực nghiệm, các bộ dữ liệu công khai tiêu chuẩn cho bài toán này gồm YOOCHOOSE (thường lấy 1/64 dữ liệu gần nhất), DIGINETICA và RetailRocket. Để đảm bảo tính khách quan và khả năng tái hiện, toàn bộ thí nghiệm được viết bằng PyTorch, cố định 3 random seeds và báo cáo trung bình kèm độ lệch chuẩn, so sánh với 5 baseline từ POP đến V-SKNN. Về độ đo, HR@20 kiểm tra xem sản phẩm thực tế có lọt vào Top-20 gợi ý hay không, còn MRR@20 đánh giá thêm vị trí xếp hạng: ví dụ nếu sản phẩm đúng đứng ở hạng 4 thì HR@20 bằng 1 và MRR@20 bằng 1 chia 4 là 0.25.</div>
+    </section>
+    <section class="slide-card" id="slide-11">
+      <div class="slide-header">
+        <span class="badge">Slide 11 / 15</span>
+        <h2>LIVE DEMO</h2>
+      </div>
+      <ul class="slide-body"><li>Mô phỏng Khuyến nghị Theo Phiên (Streamlit)</li><li>1. Interactive Session Simulator</li><li>• Giả lập khách vãng lai click từng sản phẩm</li><li>• Cập nhật Top-10 tức thời sau mỗi cú click</li><li>• Đối chiếu song song: POP | V-SKNN | GRU4Rec</li><li>2. Benchmark &amp; Biểu đồ (app_demo.py)</li><li>• Phát lại phiên Test kèm Ground Truth</li><li>• Tính trực tiếp HR@20 và MRR@20 tại từng bước</li><li>• Tab 2: Bảng tổng hợp &amp; biểu đồ độ dài phiên</li><li>11 / 15</li></ul>
+      <div class="notes"><strong>Speaker Notes (Script nói):</strong> Sau đây là phần demo trực tiếp trên giao diện Streamlit mà nhóm đã cài đặt. Ở chế độ đầu tiên, ta có thể đóng vai một khách vãng lai chưa đăng nhập, click chọn lần lượt từng sản phẩm để xem danh sách Top-10 của POP, V-SKNN và GRU4Rec thay đổi như thế nào theo thời gian thực. Ở chế độ thứ hai, ta phát lại một phiên có sẵn trong tập test để đối chiếu trực tiếp với sản phẩm thực tế tiếp theo và quan sát giá trị HR@20, MRR@20 tại từng bước.</div>
+    </section>
+    <section class="slide-card" id="slide-12">
+      <div class="slide-header">
+        <span class="badge">Slide 12 / 15</span>
+        <h2>4. KẾT QUẢ</h2>
+      </div>
+      <ul class="slide-body"><li>Kết quả thực nghiệm trên YOOCHOOSE 1/64</li><li>CHKHMT15B1 • Chủ đề 9: Session-based Recommendation</li><li>12 / 15</li><li>Mô hình</li><li>HR@20 (Mean ± Std)</li><li>MRR@20 (Mean ± Std)</li><li>POP</li><li>0.0641 ± 0.0000</li><li>0.0158 ± 0.0000</li><li>S-POP</li><li>0.3242 ± 0.0000</li><li>0.1942 ± 0.0000</li><li>Item-KNN</li><li>0.4576 ± 0.0000</li><li>0.1840 ± 0.0000</li><li>SKNN</li><li>0.6390 ± 0.0000</li><li>0.2603 ± 0.0000</li><li>V-SKNN</li><li>0.6362 ± 0.0000</li><li>0.2695 ± 0.0000</li><li>GRU4Rec (CE)</li><li>0.6130 ± 0.0029</li><li>0.2562 ± 0.0008</li><li>GRU4Rec (BPR)</li><li>0.4839 ± 0.0097</li><li>0.1678 ± 0.0036</li><li>Thực nghiệm trên 38.928 cặp test (3 seeds: 42, 43, 44): V-SKNN đạt MRR@20 cao nhất (0.2695), SKNN đạt HR@20 cao nhất (0.6390).</li></ul>
+      <div class="notes"><strong>Speaker Notes (Script nói):</strong> Đây là bảng kết quả thực nghiệm thật mà nhóm đã chạy trên 38.928 cặp test của bộ YOOCHOOSE 1/64 qua 3 random seeds. Có thể thấy POP chỉ đạt HR@20 khoảng 6.41%, S-POP lên 32.42% nhờ các click lặp lại trong phiên, Item-KNN đạt 45.76%. Nổi bật nhất là nhóm hàng xóm theo phiên: SKNN đạt HR@20 cao nhất là 63.90%, còn V-SKNN đạt MRR@20 cao nhất là 0.2695 nhờ ưu tiên các click gần nhất. Trong khi đó GRU4Rec dùng Cross-Entropy đạt HR@20 là 61.30% và MRR@20 là 0.2562, vượt xa phiên bản dùng BPR loss (48.39%).</div>
+    </section>
+    <section class="slide-card" id="slide-13">
+      <div class="slide-header">
+        <span class="badge">Slide 13 / 15</span>
+        <h2>4. THẢO LUẬN</h2>
+      </div>
+      <ul class="slide-body"><li>Phân tích sâu &amp; Bài học về Baseline mạnh</li><li>CHKHMT15B1 • Chủ đề 9: Session-based Recommendation</li><li>13 / 15</li><li>Hàm mất mát (CE vs. BPR)</li><li>• Cross-Entropy (0.6130) vượt BPR (0.4839) nhờ tối ưu phân phối trên toàn bộ 8.365 sản phẩm.</li><li>• Phiên dài (6+): HR@20 giảm nhẹ ở cả 3 mô hình do nhiễu đổi ý định.</li><li>Khi nào dùng V-SKNN vs. GRU4Rec?</li><li>• Kiểm chứng Ludewig &amp; Jannach (2018): V-SKNN đạt MRR@20 (0.2695) nhỉnh hơn GRU4Rec (0.2562) trên YOOCHOOSE 1/64.</li><li>• Độ dài phiên: V-SKNN dẫn đầu ở cả phiên ngắn (0.6618), trung bình (0.6624) và dài (0.5769).</li><li>• Chọn V-SKNN khi: Cần triển khai nhanh, dễ giải thích, cập nhật phiên mới tức thì.</li><li>• Chọn GRU4Rec / NARM / SR-GNN khi: Chuỗi dài phức tạp hoặc cần tích hợp embedding đặc trưng sản phẩm.</li></ul>
+      <div class="notes"><strong>Speaker Notes (Script nói):</strong> Nhìn vào biểu đồ phân tích theo độ dài phiên bên trái, ở cả 3 nhóm độ dài ngắn (1-2 click), trung bình (3-5 click) và dài (6+ click), V-SKNN đều duy trì HR@20 cao hơn GRU4Rec khoảng 2.5 đến 3 phần trăm, đặc biệt khi phiên dài trên 6 click thì cả hai đều giảm do người dùng bắt đầu chuyển ý định. Về hàm mất mát, Cross-Entropy vượt trội BPR trên tập YOOCHOOSE 1/64 vì tính trực tiếp trên toàn bộ 8.365 sản phẩm thay vì chỉ mẫu âm trong batch. Kết quả này khẳng định hoàn toàn kết luận của Ludewig và Jannach (2018): luôn phải so sánh với các baseline hàng xóm mạnh như V-SKNN trước khi kết luận mô hình học sâu là tốt nhất.</div>
+    </section>
+    <section class="slide-card" id="slide-14">
+      <div class="slide-header">
+        <span class="badge">Slide 14 / 15</span>
+        <h2>5. KẾT LUẬN</h2>
+      </div>
+      <ul class="slide-body"><li>Kết luận, Hạn chế &amp; Hướng phát triển</li><li>CHKHMT15B1 • Chủ đề 9: Session-based Recommendation</li><li>14 / 15</li><li>Kết luận</li><li>• Hệ thống hóa bài toán Session-based RS và phân biệt rõ với Sequential RS.</li><li>• Hoàn thiện pipeline thực nghiệm đa seed + Live Demo so sánh trực tiếp POP, V-SKNN và GRU4Rec.</li><li>Hạn chế</li><li>• Item Cold-start: Không gợi ý được sản phẩm mới chưa có click</li><li>• Chưa sử dụng metadata (danh mục, giá, mô tả)</li><li>• Chưa đo độ đa dạng (ILD) và độ mới lạ (Novelty)</li><li>Hướng phát triển</li><li>• Kết hợp đặc trưng nội dung / LLM embedding cho item mới</li><li>• Mở rộng cài đặt NARM, STAMP, SR-GNN trên dữ liệu lớn</li><li>• Xử lý chuyển đổi ý định đột ngột trong phiên dài</li></ul>
+      <div class="notes"><strong>Speaker Notes (Script nói):</strong> Tóm lại, bài trình bày đã hệ thống hóa bài toán khuyến nghị theo phiên duyệt web, chỉ ra sự khác biệt cốt lõi với khuyến nghị tuần tự và hoàn thiện pipeline thực nghiệm từ tiền xử lý đến đánh giá đa seed kèm ứng dụng demo. Đề tài vẫn còn một số hạn chế như chưa giải quyết được bài toán item cold-start cho sản phẩm mới chưa có lượt click, chưa tích hợp metadata và mới chỉ đánh giá theo độ chính xác xếp hạng. Trong hướng phát triển tiếp theo, ta có thể kết hợp thêm embedding nội dung sản phẩm, mở rộng thực nghiệm với NARM, SR-GNN và xử lý tốt hơn hiện tượng chuyển đổi ý định trong phiên dài.</div>
+    </section>
+    <section class="slide-card" id="slide-15">
+      <div class="slide-header">
+        <span class="badge">Slide 15 / 15</span>
+        <h2>TÀI LIỆU THAM KHẢO</h2>
+      </div>
+      <ul class="slide-body"><li>Tài liệu tham khảo</li><li>CHKHMT15B1 • Chủ đề 9: Session-based Recommendation</li><li>15 / 15</li><li>[1] Hidasi B. et al. (2016). Session-based recommendations with recurrent neural networks. ICLR 2016.</li><li>[2] Hidasi B., Karatzoglou A. (2018). Recurrent neural networks with top-k gains for session-based recommendations. CIKM 2018.</li><li>[3] Li J. et al. (2017). Neural attentive session-based recommendation (NARM). CIKM 2017.</li><li>[4] Liu Q. et al. (2018). STAMP: Short-term attention/memory priority model for session-based recommendation. KDD 2018.</li><li>[5] Wu S. et al. (2019). Session-based recommendation with graph neural networks (SR-GNN). AAAI 2019.</li><li>[6] Jannach D., Ludewig M. (2017). When recurrent neural networks meet the neighborhood for session-based recommendation. RecSys 2017.</li><li>[7] Ludewig M., Jannach D. (2018). Evaluation of session-based recommendation algorithms. UMUAI, 28(4-5).</li><li>[8] Chung J. et al. (2014). Empirical evaluation of gated recurrent neural networks on sequence modeling. NIPS Workshop 2014.</li></ul>
+      <div class="notes"><strong>Speaker Notes (Script nói):</strong> Trên đây là danh mục 8 tài liệu tham khảo gốc và bài đánh giá nền tảng được sử dụng trong bài trình bày. Phần thuyết trình đến đây là kết thúc, cảm ơn cả lớp đã lắng nghe và rất mong nhận được câu hỏi thảo luận.</div>
+    </section>
+</div>
+</body>
+</html>

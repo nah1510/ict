@@ -167,9 +167,28 @@ def save_processed(
         meta_out.to_csv(output_dir / "item_meta.csv", index=False)
 
 
+def load_yoochoose(path: str, fraction: int = 64) -> pd.DataFrame:
+    """Load YOOCHOOSE clicks (.dat) and keep the most recent 1/fraction events."""
+    df = pd.read_csv(
+        path,
+        header=None,
+        usecols=[0, 1, 2],
+        names=["session_id", "timestamp_str", "item_id"],
+        dtype={"session_id": "int64", "item_id": "int64"},
+    )
+    df["timestamp"] = pd.to_datetime(df["timestamp_str"], format="ISO8601").astype("int64") // 10**9
+    df = df.drop(columns=["timestamp_str"]).sort_values("timestamp")
+    if fraction > 1:
+        keep_n = max(1, len(df) // fraction)
+        df = df.iloc[-keep_n:]
+    return df.reset_index(drop=True)
+
+
 def main() -> None:
     parser = argparse.ArgumentParser(description="Preprocess session data for Session-based RS.")
     parser.add_argument("--sample", action="store_true", help="Generate synthetic sample dataset.")
+    parser.add_argument("--yoochoose", type=str, default=None, help="Path to yoochoose-clicks.dat.")
+    parser.add_argument("--fraction", type=int, default=64, help="Keep most recent 1/fraction of YOOCHOOSE (default 64).")
     parser.add_argument("--input_csv", type=str, default=None, help="Path to CSV with session_id,item_id,timestamp.")
     parser.add_argument("--output_dir", type=str, default="data/processed", help="Output directory.")
     parser.add_argument("--min_item_freq", type=int, default=5)
@@ -181,11 +200,14 @@ def main() -> None:
     if args.sample:
         print("Generating synthetic e-commerce session dataset...")
         events_df, meta_df = generate_sample_events(seed=args.seed)
+    elif args.yoochoose:
+        print(f"Loading YOOCHOOSE 1/{args.fraction} from {args.yoochoose}...")
+        events_df = load_yoochoose(args.yoochoose, fraction=args.fraction)
     elif args.input_csv:
         print(f"Loading events from {args.input_csv}...")
         events_df = pd.read_csv(args.input_csv)
     else:
-        raise ValueError("Provide either --sample or --input_csv.")
+        raise ValueError("Provide --sample, --yoochoose, or --input_csv.")
 
     raw_sessions = events_df["session_id"].nunique()
     raw_items = events_df["item_id"].nunique()
